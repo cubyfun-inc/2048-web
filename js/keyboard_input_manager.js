@@ -1,15 +1,16 @@
 function KeyboardInputManager() {
   this.events = {};
-
+  this.audio_run = new Audio('../audio/run.mp3')
+  this.audio_clear = new Audio('../audio/clear.mp3')
   if (window.navigator.msPointerEnabled) {
     //Internet Explorer 10 style
-    this.eventTouchstart    = "MSPointerDown";
-    this.eventTouchmove     = "MSPointerMove";
-    this.eventTouchend      = "MSPointerUp";
+    this.eventTouchstart = "MSPointerDown";
+    this.eventTouchmove = "MSPointerMove";
+    this.eventTouchend = "MSPointerUp";
   } else {
-    this.eventTouchstart    = "touchstart";
-    this.eventTouchmove     = "touchmove";
-    this.eventTouchend      = "touchend";
+    this.eventTouchstart = "touchstart";
+    this.eventTouchmove = "touchmove";
+    this.eventTouchend = "touchend";
   }
 
   this.listen();
@@ -46,14 +47,16 @@ KeyboardInputManager.prototype.listen = function () {
     87: 0, // W
     68: 1, // D
     83: 2, // S
-    65: 3  // A
+    65: 3, // A
   };
+
+
 
   // Respond to direction keys
   document.addEventListener("keydown", function (event) {
-    var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
-                    event.shiftKey;
-    var mapped    = map[event.which];
+    var modifiers =
+      event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+    var mapped = map[event.which];
 
     if (!modifiers) {
       if (mapped !== undefined) {
@@ -73,58 +76,98 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
 
+
+
   // Respond to swipe events
-  var touchStartClientX, touchStartClientY;
-  var gameContainer = document.getElementsByClassName("game-container")[0];
+  // var touchStartClientX, touchStartClientY;
+  // var gameContainer = document.getElementsByClassName("grid-container")[0];
+   
 
-  gameContainer.addEventListener(this.eventTouchstart, function (event) {
-    if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
-        event.targetTouches.length > 1) {
-      return; // Ignore if touching with more than 1 finger
-    }
+  // gameContainer.addEventListener(this.eventTouchstart, function (event) {
+  //   if (
+  //     (!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+  //     event.targetTouches.length > 1
+  //   ) {
+  //     return; // Ignore if touching with more than 1 finger
+  //   }
 
-    if (window.navigator.msPointerEnabled) {
-      touchStartClientX = event.pageX;
-      touchStartClientY = event.pageY;
-    } else {
-      touchStartClientX = event.touches[0].clientX;
-      touchStartClientY = event.touches[0].clientY;
-    }
+  //   if (window.navigator.msPointerEnabled) {
+  //     touchStartClientX = event.pageX;
+  //     touchStartClientY = event.pageY;
+  //   } else {
+  //     touchStartClientX = event.touches[0].clientX;
+  //     touchStartClientY = event.touches[0].clientY;
+  //   }
 
+  //   event.preventDefault();
+  // });
+
+  // gameContainer.addEventListener(this.eventTouchmove, function (event) {
+  //   event.preventDefault();
+  // });
+
+  // gameContainer.addEventListener(this.eventTouchend, function (event) {
+  //   if (
+  //     (!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+  //     event.targetTouches.length > 0
+  //   ) {
+  //     return; // Ignore if still touching with one or more fingers
+  //   }
+
+  //   var touchEndClientX, touchEndClientY;
+
+  //   if (window.navigator.msPointerEnabled) {
+  //     touchEndClientX = event.pageX;
+  //     touchEndClientY = event.pageY;
+  //   } else {
+  //     touchEndClientX = event.changedTouches[0].clientX;
+  //     touchEndClientY = event.changedTouches[0].clientY;
+  //   }
+
+  //   var dx = touchEndClientX - touchStartClientX;
+  //   var absDx = Math.abs(dx);
+
+  //   var dy = touchEndClientY - touchStartClientY;
+  //   var absDy = Math.abs(dy);
+
+  //   if (Math.max(absDx, absDy) > 10) {
+  //     // (right : left) : (down : up)
+  //     self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : dy > 0 ? 2 : 0);
+  //   }
+  // });
+
+
+  document
+  .querySelector(".grid-direction.up")
+  .addEventListener("click", function (event) {
     event.preventDefault();
+    event.stopPropagation();
+    self.emit("move", 0);
   });
 
-  gameContainer.addEventListener(this.eventTouchmove, function (event) {
+document
+  .querySelector(".grid-direction.right")
+  .addEventListener("click", function (event) {
     event.preventDefault();
+    event.stopPropagation();
+    self.emit("move", 1);
+  });
+document
+  .querySelector(".grid-direction.down")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    self.emit("move", 2);
+  });
+document
+  .querySelector(".grid-direction.left")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    self.emit("move", 3);
   });
 
-  gameContainer.addEventListener(this.eventTouchend, function (event) {
-    if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
-        event.targetTouches.length > 0) {
-      return; // Ignore if still touching with one or more fingers
-    }
 
-    var touchEndClientX, touchEndClientY;
-
-    if (window.navigator.msPointerEnabled) {
-      touchEndClientX = event.pageX;
-      touchEndClientY = event.pageY;
-    } else {
-      touchEndClientX = event.changedTouches[0].clientX;
-      touchEndClientY = event.changedTouches[0].clientY;
-    }
-
-    var dx = touchEndClientX - touchStartClientX;
-    var absDx = Math.abs(dx);
-
-    var dy = touchEndClientY - touchStartClientY;
-    var absDy = Math.abs(dy);
-
-    if (Math.max(absDx, absDy) > 10) {
-      // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
-    }
-  });
 };
 
 KeyboardInputManager.prototype.restart = function (event) {
@@ -142,3 +185,9 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+
+
+// KeyboardInputManager.prototype.initAudio = function() {
+  
+// }

@@ -129,6 +129,13 @@ GameManager.prototype.moveTile = function (tile, cell) {
 // Move tiles on the grid in the specified direction
 GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
+
+  try {
+    this.inputManager.audio_run.play()
+  } catch (err) {
+    
+  }
+  
   var self = this;
 
   if (this.isGameTerminated()) return; // Don't do anything if the game's over
@@ -159,6 +166,11 @@ GameManager.prototype.move = function (direction) {
 
           self.grid.insertTile(merged);
           self.grid.removeTile(tile);
+
+          try {
+            self.inputManager.audio_clear.play()
+          } catch (err) { 
+          }
 
           // Converge the two tiles' positions
           tile.updatePosition(positions.next);
