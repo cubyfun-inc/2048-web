@@ -20,7 +20,7 @@ services:
       - 'traefik.http.routers.2048-web.middlewares=gzip@file'
       - 'traefik.http.routers.2048-web.tls=true'
       - 'traefik.http.services.2048-web.loadbalancer.server.scheme=http'
-      - 'traefik.http.routers.2048-web.tls.domains[0].main=hardware.chatee.fun'
+      - 'traefik.http.routers.2048-web.tls.domains[0].main=2048.chatee.fun'
       # - 'traefik.http.services.2048-web.loadbalancer.server.port=80'
     logging:
       driver: 'json-file'
