@@ -1,0 +1,11 @@
+.vscode/
+.husky/
+node_modules/
+npm-debug.log
+dist/
+graphql/
+test/
+documentation/
+logs/
+error.log
+combined.log
