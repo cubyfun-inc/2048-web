@@ -10,7 +10,7 @@ services:
     expose:
       - 80
     deploy:
-      replicas: 1
+      replicas: 3
     restart: on-failure:5
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf

@@ -17,10 +17,9 @@
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
+  <div class="logo"></div>
   <div class="container">
     <div class="heading">
-      <!-- <h1 class="title">2048</h1> -->
-   
     </div>
 
     <div class="above-game">
@@ -33,53 +32,61 @@
       </div>
     </div>
 
-    <div class="game-container">
-      <div class="game-message">
-        <p></p>
-        <div class="lower">
-	        <a class="keep-playing-button">Keep going</a>
-          <a class="retry-button">Try again</a>
+    <div class="base-c">
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+          </div>
         </div>
+  
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell radius-1"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell radius-2"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell "></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell "></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell radius-3"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell radius-4"></div>
+          </div>
+  
+  
+        </div>
+  
+        <div class="tile-container">
+  
+        </div>
+  
+        <div class="grid-direction up">up</div>
+        <div class="grid-direction down">down</div>
+        <div class="grid-direction left">left</div>
+        <div class="grid-direction right">right</div> 
       </div>
-
-      <div class="grid-container">
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-
-
-      </div>
-
-      <div class="tile-container">
-
-      </div>
-
-      <div class="grid-direction up">up</div>
-      <div class="grid-direction down">down</div>
-      <div class="grid-direction left">left</div>
-      <div class="grid-direction right">right</div> 
+      
     </div>
+    <div class="link">
+      <a href="https://zhongchou.modian.com/item/130518.html#comment" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+
+   
   </div>
 
   <script src="js/bind_polyfill.js"></script>
