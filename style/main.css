@@ -93,9 +93,6 @@ h1.title {
   }
 }
 .scores-container {
-  float: right;
-  margin-right: 196px;
-  margin-top: -8px;
   text-align: right;
 }
 
@@ -780,13 +777,11 @@ hr {
 }
 
 .above-game {
-  padding-right: 12px;
-}
-
-.above-game:after {
-  content: "";
-  display: block;
-  clear: both;
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
 }
 
 .game-intro {
@@ -806,7 +801,7 @@ hr {
   line-height: 42px;
   display: block;
   text-align: center;
-  float: right;
+  margin-top: 10px;
 }
 
 .game-explanation {
@@ -842,9 +837,7 @@ hr {
   .scores-container {
     margin-right: 48px;
   }
-  .above-game {
-    padding-right: 12px;
-  }
+
 
   .heading {
     margin-bottom: 40px;
@@ -862,7 +855,6 @@ hr {
     padding: 0;
     display: block;
     box-sizing: border-box;
-    margin-top: 2px;
   }
    
   .game-container {
