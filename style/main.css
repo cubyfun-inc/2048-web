@@ -127,7 +127,6 @@ h1.title {
 .best-container .score-addition {
   position: absolute;
   right: 30px;
-  color: red;
   font-size: 25px;
   line-height: 25px;
   font-weight: bold;
@@ -300,16 +299,16 @@ hr {
 }
 
 .game-container .grid-direction {
-  z-index: 999;
+  
   position: absolute;
   left: 0;
   bottom: 0;
   font-size: 0;
   width: 0;
   height: 0;
-  /* width: 100px; */
-  /* height: 100px; */
-  /* background-color: red; */
+  overflow: hidden;
+  background-color: transparent;
+  border-color: transparent;
 }
 .game-container .grid-direction.up{
   top: 0;
@@ -334,18 +333,18 @@ hr {
   left: 0;
   transform: translate(-111%, -50%); 
 
-  border-right: 100px solid  transparent;
-  border-top: 100px solid transparent;
-  border-bottom: 100px solid transparent;
+  border-right: 100px solid  transparent !important;
+  border-top: 100px solid transparent !important;
+  border-bottom: 100px solid transparent !important;
 }
 .game-container .grid-direction.right{
   top: 50%;
   left: 100%;
   transform: translate(13%, -50%);
   
-  border-left: 100px solid  transparent;
-  border-top: 100px solid transparent;
-  border-bottom: 100px solid transparent;
+  border-left: 100px solid  transparent !important;
+  border-top: 100px solid transparent !important;
+  border-bottom: 100px solid transparent !important;
 }
 
 .grid-container {
@@ -836,6 +835,12 @@ hr {
   }
   .scores-container {
     /* margin-right: 48px; */
+    display: inline-flex;
+    flex-wrap: nowrap;
+
+  }
+  .score-container > .score-container {
+    margin-right: 10px;
   }
 
 
@@ -1138,6 +1143,49 @@ hr {
    
     border-bottom-right-radius: 20px !important; 
   }
+
+  .game-container .grid-direction.up{
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -114%);
+  
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+  .game-container .grid-direction.down{
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 111%); 
+  
+    border-top: 50px solid  transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+  .game-container .grid-direction.left{
+    top: 50%;
+    left: 0;
+    transform: translate(-111%, -50%); 
+  
+    border-right: 50px solid  transparent !important;
+    border-top: 50px solid transparent !important;
+    border-bottom: 50px solid transparent !important;
+  }
+  .game-container .grid-direction.right{
+    top: 50%;
+    left: 100%;
+    transform: translate(13%, -50%);
+    
+    border-left: 50px solid  transparent !important;
+    border-top: 50px solid transparent !important;
+    border-bottom: 50px solid transparent !important;
+  }
+  
+  .grid-container {
+    position: absolute;
+    z-index: 1;
+  }
+  
 
 
 }
